@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 16.x
@@ -23,9 +23,4 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run make
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.2.4
-      with:
-        # A file, directory or wildcard pattern that describes what to upload
-        path: out/make/**/*
-        # The desired behavior if no files are found using the provided path.
+
