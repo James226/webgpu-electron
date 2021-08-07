@@ -1,7 +1,7 @@
 {
   "name": "electron-webgpu",
   "productName": "electron-webgpu",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
@@ -59,6 +59,17 @@
             }
           }
         ]
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "James226",
+              "name": "webgpu-electron"
+            }
+          }
+        }
       ]
     }
   },
@@ -69,6 +80,7 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.59",
     "@electron-forge/maker-zip": "^6.0.0-beta.59",
     "@electron-forge/plugin-webpack": "6.0.0-beta.59",
+    "@electron-forge/publisher-github": "^6.0.0-beta.59",
     "@vercel/webpack-asset-relocator-loader": "1.6.0",
     "css-loader": "^6.0.0",
     "electron-nightly": "^16.0.0-nightly.20210805",
