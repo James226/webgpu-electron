@@ -5,8 +5,12 @@ rules.push({
   use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
 });
 
+rules.push({
+  test: /\.wgsl$/i,
+  use: 'raw-loader',
+});
+
 module.exports = {
-  // Put your normal webpack config below here
   module: {
     rules,
   },

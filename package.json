@@ -85,9 +85,11 @@
     "css-loader": "^6.0.0",
     "electron-nightly": "^16.0.0-nightly.20210805",
     "node-loader": "^2.0.0",
+    "raw-loader": "^4.0.2",
     "style-loader": "^3.0.0"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "gl-matrix": "^3.3.0"
   }
 }
