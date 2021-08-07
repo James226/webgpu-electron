@@ -1,28 +1,22 @@
 {
-  "name": "webgpu-electron",
+  "name": "electron-webgpu",
+  "productName": "electron-webgpu",
   "version": "1.0.0",
-  "description": "WebGPU Electron example",
-  "main": "main.js",
+  "description": "My Electron application description",
+  "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish"
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
   },
-  "author": "James226",
-  "license": "ISC",
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.59",
-    "@electron-forge/maker-deb": "^6.0.0-beta.59",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.59",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.59",
-    "@electron-forge/maker-zip": "^6.0.0-beta.59",
-    "@electron-forge/publisher-github": "^6.0.0-beta.59",
-    "electron-nightly": "^16.0.0-nightly.20210805"
+  "keywords": [],
+  "author": {
+    "name": "James Parker",
+    "email": "James1.Parker@sainsburys.co.uk"
   },
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
-  },
+  "license": "MIT",
   "config": {
     "forge": {
       "packagerConfig": {},
@@ -30,7 +24,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "my_electron_app"
+            "name": "electron_webgpu"
           }
         },
         {
@@ -48,18 +42,40 @@
           "config": {}
         }
       ],
-      "publishers": [
-        {
-          "name": "@electron-forge/publisher-github",
-          "config": {
-            "repository": {
-              "owner": "James226",
-              "name": "webgpu-electron"
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.js",
+                  "name": "main_window"
+                }
+              ]
             }
           }
-        }
+        ]
       ]
-
     }
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.59",
+    "@electron-forge/maker-deb": "^6.0.0-beta.59",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.59",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.59",
+    "@electron-forge/maker-zip": "^6.0.0-beta.59",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.59",
+    "@vercel/webpack-asset-relocator-loader": "1.6.0",
+    "css-loader": "^6.0.0",
+    "electron-nightly": "^16.0.0-nightly.20210805",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.0.0"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
   }
 }
