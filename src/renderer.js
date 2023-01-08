@@ -12,7 +12,7 @@ import FragmentShader from './fragment.wgsl';
     const device = await adapter.requestDevice();
  
     const canvas = document.getElementById('canvas')
-    const context = canvas.getContext('gpupresent');
+    const context = canvas.getContext('webgpu');
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -25,11 +25,14 @@ import FragmentShader from './fragment.wgsl';
     window.addEventListener('resize', resize, false);
  
     const swapChainFormat = 'bgra8unorm';
+
+    let presentationFormat = navigator.gpu.getPreferredCanvasFormat();
+    context.configure({
+        device: device,
+        format: presentationFormat,
+        alphaMode: 'opaque'
+      });
  
-    const swapChain = context.configureSwapChain({
-        device,
-        format: swapChainFormat
-    });
   
     const pipeline = device.createRenderPipeline({
         vertex: {
@@ -53,11 +56,11 @@ import FragmentShader from './fragment.wgsl';
     });
  
     const commandEncoder = device.createCommandEncoder();
-    const textureView = swapChain.getCurrentTexture().createView();
+    const textureView = context.getCurrentTexture().createView();
  
     const renderPassDescriptor = {
         colorAttachments: [{
-            attachment: textureView,
+            view: textureView,
             loadValue: { r: 1.0, g: 1.0, b: 1.0, a: 1.0 },
         }]
     };
