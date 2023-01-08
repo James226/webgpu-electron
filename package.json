@@ -13,8 +13,7 @@
   },
   "keywords": [],
   "author": {
-    "name": "James Parker",
-    "email": "James1.Parker@sainsburys.co.uk"
+    "name": "James Parker"
   },
   "license": "MIT",
   "config": {
@@ -43,9 +42,9 @@
         }
       ],
       "plugins": [
-        [
-          "@electron-forge/plugin-webpack",
-          {
+        {
+          "name": "@electron-forge/plugin-webpack",
+          "config": {
             "mainConfig": "./webpack.main.config.js",
             "renderer": {
               "config": "./webpack.renderer.config.js",
@@ -58,7 +57,7 @@
               ]
             }
           }
-        ]
+        }
       ],
       "publishers": [
         {
@@ -74,22 +73,22 @@
     }
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.59",
-    "@electron-forge/maker-deb": "^6.0.0-beta.59",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.59",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.59",
-    "@electron-forge/maker-zip": "^6.0.0-beta.59",
-    "@electron-forge/plugin-webpack": "6.0.0-beta.59",
-    "@electron-forge/publisher-github": "^6.0.0-beta.59",
-    "@vercel/webpack-asset-relocator-loader": "1.6.0",
-    "css-loader": "^6.0.0",
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
+    "@electron-forge/plugin-webpack": "^6.0.4",
+    "@electron-forge/publisher-github": "^6.0.4",
+    "@vercel/webpack-asset-relocator-loader": "^1.6.0",
+    "css-loader": "^6.7.3",
     "electron": "^22.0.0",
     "node-loader": "^2.0.0",
     "raw-loader": "^4.0.2",
-    "style-loader": "^3.0.0"
+    "style-loader": "^3.3.1"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
-    "gl-matrix": "^3.3.0"
+    "gl-matrix": "^3.4.3"
   }
 }
